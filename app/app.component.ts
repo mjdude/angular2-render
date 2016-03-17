@@ -5,8 +5,19 @@ import {FavouriteComponent} from './favourite.component';
     selector: 'my-app',
     template:
             `
-            <favourite></favourite>
+            <favourite [isFavourite]="post.isFavourite"
+            (change)="onFavouriteChange($event)">
+            </favourite>
             `,
     directives: [FavouriteComponent]
 })
-export class AppComponent { }
+export class AppComponent {
+  post = {
+    title: "Title",
+    isFavourite: true
+  }
+
+  onFavouriteChange($event){
+    console.log($event);
+  }
+}
